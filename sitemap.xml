@@ -2,8 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sdown1969-commits.github.io/ride-or-die-america/</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sdown1969-commits.github.io/ride-or-die-america/media-kit.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
