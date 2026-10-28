@@ -276,6 +276,8 @@
   .stat + .stat{border-left:1px solid rgba(255,255,255,.14)}
   .stat b{display:block; font-family:"Barlow Condensed",sans-serif; font-size:clamp(26px,4vw,38px); font-weight:700; color:var(--gold); line-height:1}
   .stat span{font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#d8d0c0}
+  .livedot{display:inline-block; width:12px; height:12px; margin-right:9px; border-radius:50%; background:#57e389; vertical-align:baseline; animation:livepulse 1.8s ease-in-out infinite}
+  @keyframes livepulse{0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(87,227,137,.55)}50%{opacity:.55; box-shadow:0 0 0 7px rgba(87,227,137,0)}}
   @media (max-width:640px){ .stats{grid-template-columns:1fr 1fr} .stat:nth-child(3){border-left:none} .stat{border-top:1px solid rgba(255,255,255,.14)} .stat:nth-child(-n+2){border-top:none} }
 
   /* Story */
@@ -435,11 +437,11 @@
       </div>
     </div>
   </section>
-  <div class="stats" role="list" aria-label="Journey proof">
-    <div class="stat" role="listitem"><b>66,000+</b><span>Miles ridden</span></div>
-    <div class="stat" role="listitem"><b>1,250+</b><span>Days on the road</span></div>
-    <div class="stat" role="listitem"><b>2023</b><span>Riding solo since</span></div>
-    <div class="stat" role="listitem"><b>Daily</b><span>One lesson a day</span></div>
+  <div class="stats" role="list" aria-label="Journey proof — live counter">
+    <div class="stat" role="listitem"><b>66,501.6</b><span>Documented miles</span></div>
+    <div class="stat" role="listitem"><b>Day <span id="liveDay">1,275</span></b><span>Days on the road</span></div>
+    <div class="stat" role="listitem"><b><span class="livedot" aria-hidden="true"></span>STILL RIDING</b><span>On the road now</span></div>
+    <div class="stat" role="listitem"><b>Oct 28, 2026</b><span>Miles last verified</span></div>
   </div>
 
 
@@ -951,6 +953,17 @@
       navigator.clipboard.writeText(msg).then(done, done);
     } else { done(); }
   });
+})();
+</script>
+<script>
+(function () {
+  var el = document.getElementById('liveDay');
+  if (!el) return;
+  var start = Date.UTC(2023, 4, 3); // May 3, 2023 = Day 1
+  var now = new Date();
+  var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  var days = Math.floor((today - start) / 86400000) + 1;
+  if (days > 0) el.textContent = days.toLocaleString('en-US');
 })();
 </script>
 </body>
