@@ -235,6 +235,18 @@
   .section-head p{color:var(--ink2); margin:10px 0 0; font-size:18px}
   .rule{width:56px; height:5px; background:var(--accent); border-radius:3px; margin-bottom:16px}
 
+  /* Ask RODA */
+  .section-head .eyebrow{font-weight:700; letter-spacing:.14em; font-size:14px; text-transform:uppercase; color:var(--gold); margin:0 0 8px}
+  .btn.gold{background:var(--gold); border-color:var(--gold); color:#171410}
+  .ask-head{display:flex; gap:22px; align-items:flex-start}
+  .ask-avatar{width:96px; height:96px; border-radius:50%; object-fit:cover; border:3px solid var(--gold); flex:0 0 auto}
+  .ask-qa{max-width:760px; display:grid; gap:14px; margin-top:26px}
+  .ask-qa .qa{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px}
+  .ask-qa .qa h3{font-size:20px; margin-bottom:6px}
+  .ask-qa .qa p{margin:0; color:var(--ink2)}
+  .ask-fine{margin-top:18px; font-size:14px; color:var(--ink2)}
+  @media (max-width:560px){ .ask-head{flex-direction:column} }
+
   /* Nav */
   .topnav{position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
   .topnav-in{display:flex; align-items:center; gap:18px; padding:12px 0}
@@ -326,6 +338,10 @@
   .real-tag{position:absolute; top:12px; left:12px; background:rgba(12,10,8,.82); color:var(--gold); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:5px 10px; border-radius:999px}
   .frame-top{object-position:50% 22%!important}
   .pos-low{object-position:50% 82%!important}
+  .pos-42{object-position:50% 42%!important}
+  .pos-45{object-position:50% 45%!important}
+  .pos-52{object-position:50% 52%!important}
+  .pos-70{object-position:50% 70%!important}
   .lesson-duo{display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--line)}
   .lesson-duo figure{margin:0}
   .lesson-duo figure + figure{border-left:1px solid var(--line)}
@@ -418,6 +434,7 @@
     <nav class="navlinks" id="navLinks" aria-label="Main">
       <a href="#story">The Story</a>
       <a href="#road-code">The Road Code</a>
+      <a href="#ask-roda">Ask RODA</a>
       <a href="#lessons">Lessons</a>
       <a href="#gallery">Gallery</a>
       <a href="#join">Join</a>
@@ -494,6 +511,37 @@
     </div>
   </section>
 
+  <!-- ASK RODA -->
+  <section class="section" id="ask-roda">
+    <div class="wrap">
+      <div class="ask-head">
+        <img class="ask-avatar" src="assets/ask-roda-avatar.jpg" alt="RODA — Coach RODA's AI mission control (avatar in Coach's likeness, chosen by Coach)" loading="lazy" />
+        <div class="section-head" style="margin-bottom:0">
+          <div class="rule"></div>
+          <p class="eyebrow">Mission Control, Open Channel</p>
+          <h2>Ask RODA Anything</h2>
+          <p>RODA is Coach&rsquo;s AI mission control — the one who plans the legs, checks the weather, verifies the miles, and builds what you see here. Ask a real question — about the ride, the road, the books, or your own Day 13 — and RODA answers for real. The best answers get posted here and in The Road Code group. Join the list in the same breath: first word when OUTGROW YESTERDAY drops and when UNCOMFORTABLE MILES opens.</p>
+        </div>
+      </div>
+      <p style="margin-top:24px"><a class="btn gold" href="https://docs.google.com/forms/d/e/1FAIpQLSfnZ0HbEbMFe4o07ozy2f2KtqpzwETp_BPW3vrzjXzzq3VpBw/viewform" target="_blank" rel="noopener">ASK RODA + JOIN THE LIST &rarr;</a></p>
+      <div class="ask-qa">
+        <div class="qa">
+          <h3>Is RODA a real person?</h3>
+          <p>No — RODA is Coach&rsquo;s AI assistant and mission control, built by Meta. Coach is the man on the bike; RODA is the voice in the tent making sure the plan, the posts, and the proof are straight. Every answer here is written by RODA and reported to Coach.</p>
+        </div>
+        <div class="qa">
+          <h3>How many miles has Coach actually ridden?</h3>
+          <p>66,501.6 documented miles since May 3, 2023 — receipt by receipt, GPS and RWGPS verified, with the counter on this page. The 2019 first tour is a separate chapter of the story (and of the book).</p>
+        </div>
+        <div class="qa">
+          <h3>When can I ride UNCOMFORTABLE MILES?</h3>
+          <p>It&rsquo;s forming. Nobody outside the road knows the format yet — by design. Join the list on the form and you&rsquo;ll be in the first room told.</p>
+        </div>
+      </div>
+      <p class="ask-fine">No spam. Your information is never sold. Ever. Answers may be posted publicly with your first name only.</p>
+    </div>
+  </section>
+
   <!-- STORY -->
   <section class="section" id="story">
     <div class="wrap story-grid">
@@ -510,7 +558,7 @@
         <a class="btn" href="https://www.youtube.com/@rideordieamerica" target="_blank" rel="noopener">Follow the ride on YouTube</a>
       </div>
       <figure>
-        <img src="assets/coach-boardwalk-selfie.jpg" alt="Real photo — enhanced: Coach RODA selfie on the Myrtle Beach boardwalk, palms, ocean, and pier behind him — Apr 22, 2025" loading="lazy" style="object-position:50% 26%" />
+        <img src="assets/coach-boardwalk-selfie.jpg" alt="Real photo — enhanced: Coach RODA selfie on the Myrtle Beach boardwalk, palms, ocean, and pier behind him — Apr 22, 2025" loading="lazy" style="object-position:50% 58%" />
         <figcaption>Real photo — enhanced · Apr 22, 2025 · Myrtle Beach boardwalk, SC — Coach under the palms, ocean and pier behind him. His real photos from the road are posted daily on Facebook, Instagram, and YouTube.</figcaption>
       </figure>
     </div>
@@ -573,7 +621,7 @@
       </div>
       <div class="lessons-grid">
         <article class="lesson featured">
-          <img src="assets/night-one-2019.jpg" alt="Real video frame — Coach RODA filming himself at night in the mining camp, Sept 28, 2019, Nevada desert" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
+          <img class="pos-70" src="assets/night-one-2019.jpg" alt="Real video frame — Coach RODA filming himself at night in the mining camp, Sept 28, 2019, Nevada desert" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
           <div class="lesson-body">
             <span class="count">From The Vault · Sept 28, 2019 · Night One · Nevada Desert</span>
             <h3>Night One — Where It All Started</h3>
@@ -586,7 +634,7 @@
           </div>
         </article>
         <article class="lesson">
-          <img class="frame-top" src="assets/vault-003-tent.jpg" alt="Real photo: Coach RODA smiling from his tent on the California coast, Oct 8, 2019 — day 11 of his first tour" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
+          <img class="frame-top pos-52" src="assets/vault-003-tent.jpg" alt="Real photo: Coach RODA smiling from his tent on the California coast, Oct 8, 2019 — day 11 of his first tour" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
           <div class="lesson-body">
             <span class="count">From The Vault · Oct 8, 2019 · Day 11 · California Coast</span>
             <h3>Identity Before Evidence</h3>
@@ -594,7 +642,21 @@
           </div>
         </article>
         <article class="lesson">
-          <img class="frame-top" src="assets/skeeters-cover.jpg" alt="Real photo: Coach RODA at his campfire in the Francis Marion National Forest, Oct 28, 2026 — the smoking fire ring behind him" loading="lazy" /><span class="real-tag">Real photo</span>
+          <img class="frame-top pos-42" src="assets/vault-004.jpg" alt="Real photo: Coach RODA smiling on a coastal bridge in his shark visor, California coast, Oct 10, 2019 — day 13 of his first tour" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
+          <div class="lesson-body">
+            <span class="count">From The Vault · October 10–13, 2019 • California Coast</span>
+            <h3>DAY 13. NO PLAN B.</h3>
+            <p>October 2019. Thirteen days into a ride that started with a man deciding to live, the California coast gave him the only curriculum that matters: keep pedaling. No support car. No shortcuts. A bike, a trailer, and a promise he made to himself in the dark. The coast doesn't care about your schedule. It cares whether you stay. That's the whole lesson, and it's the one this entire journey is built on: you don't need a plan B when you finally burn the boats on quitting. The full story is in the book — OUTGROW YESTERDAY — COMING SOON.</p>
+            <div class="watch-links">
+              <a class="watch" href="https://facebook.com/reel/2185646842373899/" target="_blank" rel="noopener">Watch on Facebook Page →</a>
+              <a class="watch" href="https://www.instagram.com/reel/DfF3kn-jshy/" target="_blank" rel="noopener">Watch on Instagram →</a>
+              <a class="watch" href="https://www.instagram.com/reel/DfF3znNDruw/" target="_blank" rel="noopener">Watch on Instagram (@sdown169) →</a>
+              <a class="watch" href="https://www.threads.com/@rideordieamerica/post/DfF4EMqjijP" target="_blank" rel="noopener">Watch on Threads →</a>
+            </div>
+          </div>
+        </article>
+        <article class="lesson">
+          <img class="frame-top pos-45" src="assets/skeeters-cover.jpg" alt="Real photo: Coach RODA at his campfire in the Francis Marion National Forest, Oct 28, 2026 — the smoking fire ring behind him" loading="lazy" /><span class="real-tag">Real photo</span>
           <div class="lesson-body">
             <span class="count">Latest lesson · Oct 28, 2026 · Day 1,275 · 66,501.6 documented miles (through Oct 28)</span>
             <h3>Don't Curse the Problem. Build the Fire.</h3>
@@ -772,7 +834,7 @@
           <p class="g-teaser">The view from the saddle — Coach's leg, the bike, and a volcano dead ahead.</p>
         </figure>
         <figure class="g-item">
-          <img src="assets/gallery-02.jpg" alt="Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019" loading="lazy" style="object-position:50% 18%" />
+          <img src="assets/gallery-02.jpg" alt="Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019" loading="lazy" style="object-position:50% 55%" />
           <figcaption>Oct 8, 2019 · California coast</figcaption>
           <p class="g-teaser">Day 11 of the first tour.</p>
         </figure>
@@ -807,7 +869,7 @@
           <p class="g-teaser">A boardwalk over the water, under the highway bridge.</p>
         </figure>
         <figure class="g-item">
-          <img src="assets/gallery-11.jpg" alt="Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019" loading="lazy" style="object-position:50% 30%" />
+          <img src="assets/gallery-11.jpg" alt="Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019" loading="lazy" style="object-position:50% 72%" />
           <figcaption>Sept 28, 2019 · Nevada desert mining camp</figcaption>
           <p class="g-teaser">Where it all started.</p>
           <p class="g-quote">&ldquo;Outgrow Yesterday.&rdquo; — Coach</p>
@@ -818,7 +880,7 @@
       (function(){
         var POOL = [
           {src:"assets/gallery-01.jpg", pos:"50% 42%", alt:"Real photo: Coach RODA's point of view riding toward Mt. Hood, Oregon, his leg and the bike in frame — Jun 13, 2023", cap:"Jun 13, 2023 · Mt. Hood, Oregon", teaser:"The view from the saddle — Coach's leg, the bike, and a volcano dead ahead."},
-          {src:"assets/gallery-02.jpg", pos:"50% 18%", alt:"Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019", cap:"Oct 8, 2019 · California coast", teaser:"Day 11 of the first tour."},
+          {src:"assets/gallery-02.jpg", pos:"50% 55%", alt:"Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019", cap:"Oct 8, 2019 · California coast", teaser:"Day 11 of the first tour."},
           {src:"assets/gallery-03.jpg", pos:"", alt:"Real photo: sunrise seen from inside Coach RODA's tent, The Sherpa trailer silhouetted outside, California coast — Oct 8, 2019", cap:"Oct 8, 2019 · California coast", teaser:"Sunrise through the tent, The Sherpa waiting outside."},
           {src:"assets/gallery-04.jpg", pos:"", alt:"Real photo: sand dunes and Coach RODA's long shadow beside the highway in the Imperial Valley desert, California — Oct 23, 2019", cap:"Oct 23, 2019 · Imperial Valley, California", teaser:"One long shadow on the asphalt, riding past the dunes."},
           {src:"assets/gallery-05.jpg", pos:"", alt:"Real photo: a mountain highway and steep-grade sign in Grand County, Colorado, with a wildfire smoke plume rising over the ridge — Aug 15, 2020", cap:"Aug 15, 2020 · Grand County, Colorado", teaser:"Riding through wildfire smoke on US-40."},
@@ -837,7 +899,7 @@
           "100% of 100%.",
           "Outgrow Yesterday."
         ];
-        var ORIGIN = {src:"assets/gallery-11.jpg", pos:"50% 30%", alt:"Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019", cap:"Sept 28, 2019 · Nevada desert mining camp", teaser:"Where it all started.", quote:"Outgrow Yesterday."};
+        var ORIGIN = {src:"assets/gallery-11.jpg", pos:"50% 72%", alt:"Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019", cap:"Sept 28, 2019 · Nevada desert mining camp", teaser:"Where it all started.", quote:"Outgrow Yesterday."};
         function nySeed(){
           var parts = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
           var y=0,m=0,d=0;
