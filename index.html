@@ -358,6 +358,8 @@
   .g-item{margin:0}
   .g-item img{border-radius:var(--radius); width:100%; aspect-ratio:16/10; object-fit:cover}
   .g-item figcaption{font-size:14px; color:var(--ink2); margin-top:8px; font-weight:600; letter-spacing:.02em}
+  .g-teaser{font-size:14px; color:var(--ink2); margin:6px 0 0}
+  .g-quote{font-size:14px; color:var(--accent); font-style:italic; margin:6px 0 0}
 
   /* Join / Speaking / Support */
   .join-band{background:var(--accent); color:#fff; border-radius:var(--radius); padding:34px 28px; display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center}
@@ -752,60 +754,138 @@
     </div>
   </section>
 
-  <!-- GALLERY — Coach's real road photos, enhanced; each captioned with its real date and place -->
+  <!-- GALLERY — daily rotation from Coach's verified archive (2019–2026); each card captioned with its verified date and place, a teaser, and a Coach quote -->
   <section class="section" id="gallery" style="padding-top:8px">
     <div class="wrap">
       <div class="section-head">
         <div class="rule"></div>
         <h2>From the road — the gallery</h2>
         <p>Coach's real photos from the road — the bike, the trailer, the coast, the signs — enhanced for sharpness and color, and captioned with their real dates and places. The originals stay untouched in his photo library; more from the road is posted daily on <a href="https://www.instagram.com/rideordieamerica" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.facebook.com/profile.php?id=61572315731365" target="_blank" rel="noopener">Facebook</a>, and <a href="https://www.youtube.com/@rideordieamerica" target="_blank" rel="noopener">YouTube</a>.</p>
+        <p style="margin-top:10px; font-weight:700; letter-spacing:.04em; color:var(--accent)">A different cut of the archive every day — back to 2019.</p>
       </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <noscript>
       <div class="gallery-grid">
         <figure class="g-item">
           <img src="assets/gallery-01.jpg" alt="Real photo: Coach RODA's point of view riding toward Mt. Hood, Oregon, his leg and the bike in frame — Jun 13, 2023" loading="lazy" style="object-position:50% 42%" />
-          <figcaption>Jun 13, 2023 · Mt. Hood, Oregon — The view from the saddle: Coach's leg, the bike, and a volcano dead ahead. Real photo</figcaption>
+          <figcaption>Jun 13, 2023 · Mt. Hood, Oregon</figcaption>
+          <p class="g-teaser">The view from the saddle — Coach's leg, the bike, and a volcano dead ahead.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-02.jpg" alt="Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019" loading="lazy" style="object-position:50% 18%" />
-          <figcaption>Oct 8, 2019 · California coast — Day 11 of the first tour. A visor, a grin, and a shirt that said THUMBS UP to every driver, all day long. Real photo</figcaption>
+          <figcaption>Oct 8, 2019 · California coast</figcaption>
+          <p class="g-teaser">Day 11 of the first tour.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-03.jpg" alt="Real photo: sunrise seen from inside Coach RODA's tent, The Sherpa trailer silhouetted outside, California coast — Oct 8, 2019" loading="lazy" />
-          <figcaption>Oct 8, 2019 · California coast — Sunrise through the tent door, The Sherpa waiting outside. Home is wherever the tent lands. Real photo</figcaption>
+          <figcaption>Oct 8, 2019 · California coast</figcaption>
+          <p class="g-teaser">Sunrise through the tent, The Sherpa waiting outside.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-04.jpg" alt="Real photo: sand dunes and Coach RODA's long shadow beside the highway in the Imperial Valley desert, California — Oct 23, 2019" loading="lazy" />
-          <figcaption>Oct 23, 2019 · Imperial Valley, California — A road disappearing into the dunes, and one long shadow riding it. Nobody was watching yet. Real photo</figcaption>
+          <figcaption>Oct 23, 2019 · Imperial Valley, California</figcaption>
+          <p class="g-teaser">One long shadow on the asphalt, riding past the dunes.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-05.jpg" alt="Real photo: a mountain highway and steep-grade sign in Grand County, Colorado, with a wildfire smoke plume rising over the ridge — Aug 15, 2020" loading="lazy" />
-          <figcaption>Aug 15, 2020 · Grand County, Colorado — A steep-grade sign, an empty mountain highway, and a wildfire's smoke boiling over the ridge ahead. Real photo</figcaption>
+          <figcaption>Aug 15, 2020 · Grand County, Colorado</figcaption>
+          <p class="g-teaser">Riding through wildfire smoke on US-40.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-06.jpg" alt="Real photo: Mt. Shasta over pine forest and a gravel road in Northern California — Jun 2, 2023" loading="lazy" style="object-position:50% 30%" />
-          <figcaption>Jun 2, 2023 · Mt. Shasta, California — The second volcano of the ride, standing over the pines. Real photo</figcaption>
+          <figcaption>Jun 2, 2023 · Mt. Shasta, California</figcaption>
+          <p class="g-teaser">The volcano over the pine forest, seen from the gravel road.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-07.jpg" alt="Real photo: the highway dropping through pine forest toward Mt. Hood, Oregon — Jun 13, 2023" loading="lazy" style="object-position:50% 36%" />
-          <figcaption>Jun 13, 2023 · Mt. Hood, Oregon — The highway dropping toward the mountain, week 6 of Ride Or Die America. Real photo</figcaption>
+          <figcaption>Jun 13, 2023 · Mt. Hood, Oregon</figcaption>
+          <p class="g-teaser">The highway dropping through the pines toward the mountain.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-08.jpg" alt="Real photo: a boardwalk over the water under the highway bridge in Woodbine, Georgia — Apr 13, 2025" loading="lazy" style="object-position:50% 55%" />
-          <figcaption>Apr 13, 2025 · Woodbine, Georgia — A boardwalk under the highway bridge over the water, on the road north. Real photo</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="assets/gallery-09.jpg" alt="Real photo: an endless interstate unspooling across the plains of western North Dakota, seen from an overpass — Sept 16, 2025" loading="lazy" style="object-position:50% 58%" />
-          <figcaption>Sept 16, 2025 · Western North Dakota — The interstate unspooling to the horizon near Medora. This is what the miles actually look like. Real photo</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="assets/gallery-10.jpg" alt="Real photo: Coach RODA with The Beast and The Sherpa under the flag on Mama D's porch, Georgetown, SC — Oct 28, 2026" loading="lazy" style="object-position:50% 22%" />
-          <figcaption>Oct 28, 2026 · Georgetown, SC — Coach, The Beast and The Sherpa under the flag on Mama D's porch, rolling out the morning after she took him in. Real photo</figcaption>
+          <figcaption>Apr 13, 2025 · Woodbine, Georgia</figcaption>
+          <p class="g-teaser">A boardwalk over the water, under the highway bridge.</p>
         </figure>
         <figure class="g-item">
           <img src="assets/gallery-11.jpg" alt="Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019" loading="lazy" style="object-position:50% 30%" />
-          <figcaption>Sept 28, 2019 · Nevada desert — Night one: a frame from the original video, filmed in the mining camp. Where it all started</figcaption>
+          <figcaption>Sept 28, 2019 · Nevada desert mining camp</figcaption>
+          <p class="g-teaser">Where it all started.</p>
+          <p class="g-quote">&ldquo;Outgrow Yesterday.&rdquo; — Coach</p>
         </figure>
       </div>
+      </noscript>
+      <script>
+      (function(){
+        var POOL = [
+          {src:"assets/gallery-01.jpg", pos:"50% 42%", alt:"Real photo: Coach RODA's point of view riding toward Mt. Hood, Oregon, his leg and the bike in frame — Jun 13, 2023", cap:"Jun 13, 2023 · Mt. Hood, Oregon", teaser:"The view from the saddle — Coach's leg, the bike, and a volcano dead ahead."},
+          {src:"assets/gallery-02.jpg", pos:"50% 18%", alt:"Real photo: Coach RODA smiling in a visor and sunglasses on day 11 of the first tour, California coast — Oct 8, 2019", cap:"Oct 8, 2019 · California coast", teaser:"Day 11 of the first tour."},
+          {src:"assets/gallery-03.jpg", pos:"", alt:"Real photo: sunrise seen from inside Coach RODA's tent, The Sherpa trailer silhouetted outside, California coast — Oct 8, 2019", cap:"Oct 8, 2019 · California coast", teaser:"Sunrise through the tent, The Sherpa waiting outside."},
+          {src:"assets/gallery-04.jpg", pos:"", alt:"Real photo: sand dunes and Coach RODA's long shadow beside the highway in the Imperial Valley desert, California — Oct 23, 2019", cap:"Oct 23, 2019 · Imperial Valley, California", teaser:"One long shadow on the asphalt, riding past the dunes."},
+          {src:"assets/gallery-05.jpg", pos:"", alt:"Real photo: a mountain highway and steep-grade sign in Grand County, Colorado, with a wildfire smoke plume rising over the ridge — Aug 15, 2020", cap:"Aug 15, 2020 · Grand County, Colorado", teaser:"Riding through wildfire smoke on US-40."},
+          {src:"assets/gallery-06.jpg", pos:"50% 30%", alt:"Real photo: Mt. Shasta over pine forest and a gravel road in Northern California — Jun 2, 2023", cap:"Jun 2, 2023 · Mt. Shasta, California", teaser:"The volcano over the pine forest, seen from the gravel road."},
+          {src:"assets/gallery-07.jpg", pos:"50% 36%", alt:"Real photo: the highway dropping through pine forest toward Mt. Hood, Oregon — Jun 13, 2023", cap:"Jun 13, 2023 · Mt. Hood, Oregon", teaser:"The highway dropping through the pines toward the mountain."},
+          {src:"assets/gallery-08.jpg", pos:"50% 55%", alt:"Real photo: a boardwalk over the water under the highway bridge in Woodbine, Georgia — Apr 13, 2025", cap:"Apr 13, 2025 · Woodbine, Georgia", teaser:"A boardwalk over the water, under the highway bridge."},
+          {src:"assets/gallery-09.jpg", pos:"50% 58%", alt:"Real photo: an endless interstate unspooling across the plains of western North Dakota, seen from an overpass — Sept 16, 2025", cap:"Sept 16, 2025 · Western North Dakota, near Medora", teaser:"The interstate unspooling to the horizon, seen from an overpass."},
+          {src:"assets/gallery-10.jpg", pos:"50% 22%", alt:"Real photo: Coach RODA with The Beast and The Sherpa under the flag on Mama D's porch, Georgetown, SC — Oct 28, 2026", cap:"Oct 28, 2026 · Georgetown, South Carolina", teaser:"Coach, The Beast and The Sherpa on Mama D's porch."}
+        ];
+        var QUOTES = [
+          "Proof Before Philosophy.",
+          "The road is the laboratory. Transformation is the mission.",
+          "Ride On. Defy Average.",
+          "Become Undeniable.",
+          "Make it an Unbelievable Day!!!",
+          "100% of 100%.",
+          "Outgrow Yesterday."
+        ];
+        var ORIGIN = {src:"assets/gallery-11.jpg", pos:"50% 30%", alt:"Real video frame: Coach RODA resting on night one of the first tour, in the mining camp in the Nevada desert — Sept 28, 2019", cap:"Sept 28, 2019 · Nevada desert mining camp", teaser:"Where it all started.", quote:"Outgrow Yesterday."};
+        function nySeed(){
+          var parts = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+          var y=0,m=0,d=0;
+          for (var k=0;k<parts.length;k++){
+            if (parts[k].type==="year") y=parseInt(parts[k].value,10);
+            else if (parts[k].type==="month") m=parseInt(parts[k].value,10);
+            else if (parts[k].type==="day") d=parseInt(parts[k].value,10);
+          }
+          return y*10000 + m*100 + d;
+        }
+        function mulberry32(a){
+          return function(){
+            a |= 0; a = a + 0x6D2B79F5 | 0;
+            var t = Math.imul(a ^ a >>> 15, 1 | a);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+          };
+        }
+        function card(item, quote){
+          var fig = document.createElement("figure"); fig.className = "g-item";
+          var img = document.createElement("img");
+          img.src = item.src; img.alt = item.alt; img.loading = "lazy";
+          if (item.pos) img.style.objectPosition = item.pos;
+          var cap = document.createElement("figcaption"); cap.textContent = item.cap;
+          var tea = document.createElement("p"); tea.className = "g-teaser"; tea.textContent = item.teaser;
+          fig.appendChild(img); fig.appendChild(cap); fig.appendChild(tea);
+          if (quote){
+            var q = document.createElement("p"); q.className = "g-quote";
+            q.textContent = "\u201C" + quote + "\u201D — Coach";
+            fig.appendChild(q);
+          }
+          return fig;
+        }
+        var grid = document.getElementById("galleryGrid");
+        if (!grid) return;
+        var rand = mulberry32(nySeed());
+        var idx = POOL.map(function(_,i){ return i; });
+        for (var i = idx.length - 1; i > 0; i--){
+          var j = Math.floor(rand() * (i + 1));
+          var tmp = idx[i]; idx[i] = idx[j]; idx[j] = tmp;
+        }
+        var dealt = idx.slice(0, 8);
+        for (var n = 0; n < dealt.length; n++){
+          grid.appendChild(card(POOL[dealt[n]], QUOTES[n % QUOTES.length]));
+        }
+        grid.appendChild(card(ORIGIN, ORIGIN.quote));
+      })();
+      </script>
     </div>
   </section>
 
