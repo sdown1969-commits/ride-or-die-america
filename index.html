@@ -369,6 +369,14 @@
   @media (max-width:860px){ .svc-grid{grid-template-columns:1fr} }
   .svc{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px}
   .svc p{color:var(--ink2); margin:8px 0 0}
+  .book-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  @media (max-width:860px){ .book-grid{grid-template-columns:1fr} }
+  .book-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+  .book-card img{width:100%; border:2px solid #d4a437; border-radius:6px}
+  .book-card .bk-tag{color:#d4a437; letter-spacing:2px; font-size:13px; font-weight:bold; text-transform:uppercase; margin:14px 0 4px}
+  .book-card h3{margin:0 0 4px}
+  .book-card .bk-sub{color:var(--ink2); font-style:italic; margin:0 0 8px}
+  .book-card p{color:var(--ink2); margin:8px 0 0}
   .support{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; display:grid; grid-template-columns:1.15fr .85fr; gap:26px; align-items:center}
   @media (max-width:760px){ .support{grid-template-columns:1fr} }
   .support img{border-radius:10px; width:100%; aspect-ratio:16/10; object-fit:cover}
@@ -445,21 +453,42 @@
   </div>
 
 
-  <!-- BOOK -->
+  <!-- BOOKS & THE EXPERIENCE -->
   <section class="section" id="book">
-    <div class="wrap story-grid">
-      <div>
-        <img src="assets/book-cover.jpg" alt="THE SUICIDE RIDE OUT book cover — Coach RODA from behind, grinding his loaded bicycle and trailer up a storm-lit mountain pass" style="width:100%;max-width:420px;border:2px solid #d4a437" loading="lazy" />
-      </div>
-      <div>
+    <div class="wrap">
+      <div class="section-head">
         <div class="rule"></div>
-        <h2>THE SUICIDE RIDE OUT</h2>
-        <p><strong style="color:#d4a437;letter-spacing:2px">COMING SOON</strong></p>
-        <p><em>One man. One bicycle. 66,000 miles to outrun the man he used to be.</em></p>
-        <p>It started in 2019 — a 50-year-old on a bicycle, riding out of one life and into another. Desert crossings. Wildfire smoke. A broken chain in the middle of nowhere and the strangers who became lifelines. This is the true story the road has been writing for seven years — and it is almost ready to be told.</p>
-        <p>Want first word when it drops? The Road Code hears it first.</p>
-        <p><a class="btn" href="https://www.facebook.com/groups/3355436921326857" target="_blank" rel="noopener">Join The Road Code Group</a></p>
+        <h2>Outgrow Yesterday</h2>
+        <p>Two books. One road. The story of the ride — and the system the ride taught him.</p>
       </div>
+      <div class="book-grid">
+        <div class="book-card">
+          <img src="assets/book1-outgrow-yesterday.jpg" alt="OUTGROW YESTERDAY book cover — Book One: Surviving the Edge and Leaving Your Ghosts Behind — Coach RODA from behind, grinding his loaded bicycle and trailer up a storm-lit mountain pass" loading="lazy" />
+          <p class="bk-tag">Book One</p>
+          <h3>OUTGROW YESTERDAY</h3>
+          <p class="bk-sub">Surviving the Edge and Leaving Your Ghosts Behind</p>
+          <p>He was going to end it. Instead, he rode out of it — 66,000 miles and counting.</p>
+          <p><strong style="color:#d4a437;letter-spacing:2px">COMING SOON</strong></p>
+        </div>
+        <div class="book-card">
+          <img src="assets/book2-blueprint.jpg" alt="OUTGROW YESTERDAY book cover — Book Two: The R.O.D.A. Transformation Blueprint for an Iron Mind — a dark blueprint tearing open to a golden sunrise over an open road" loading="lazy" />
+          <p class="bk-tag">Book Two</p>
+          <h3>OUTGROW YESTERDAY</h3>
+          <p class="bk-sub">The R.O.D.A. Transformation Blueprint for an Iron Mind</p>
+          <p>The exact system the road taught him — mindset, discipline, resilience — built for the everyday person at a crossroads.</p>
+          <p><strong style="color:#d4a437;letter-spacing:2px">COMING SOON</strong></p>
+        </div>
+        <div class="book-card">
+          <img src="assets/uncomfortable-miles.jpg" alt="UNCOMFORTABLE MILES — The Road Code Experience — riders pushing loaded bikes and trailers up a mud track in driving rain toward a gold break on the horizon" loading="lazy" />
+          <p class="bk-tag">The Experience</p>
+          <h3>UNCOMFORTABLE MILES</h3>
+          <p class="bk-sub">The Road Code Experience</p>
+          <p><em>&ldquo;Ride the edge. Leave your ghosts behind. Find out who you are.&rdquo;</em></p>
+          <p><strong style="color:#d4a437;letter-spacing:2px">COMING SOON</strong></p>
+        </div>
+      </div>
+      <p style="margin-top:22px">Want first word when they drop? The Road Code hears it first.</p>
+      <p><a class="btn" href="https://www.facebook.com/groups/3355436921326857" target="_blank" rel="noopener">Join The Road Code Group</a></p>
     </div>
   </section>
 
