@@ -274,7 +274,8 @@
 
   /* Hero */
   .hero{position:relative; background:var(--dark); color:#fff}
-  .hero img.heroimg{width:100%; height:min(78vh,640px); object-fit:cover; object-position:32% 30%}
+  .hero img.heroimg{width:100%; height:min(78vh,640px); object-fit:cover; object-position:66% 30%}
+  @media (max-width:640px){ .hero img.heroimg{object-position:58% 30%} }
   .hero-shade{position:absolute; inset:0; background:linear-gradient(to top, rgba(10,8,6,.88) 0%, rgba(10,8,6,.38) 46%, rgba(10,8,6,.12) 100%)}
   .hero-content{position:absolute; inset:auto 0 0 0; padding:0 0 34px}
   .hero-kicker{font-weight:700; letter-spacing:.14em; font-size:14px; text-transform:uppercase; color:var(--gold); margin:0 0 8px}
