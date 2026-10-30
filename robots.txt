@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sdown1969-commits.github.io/ride-or-die-america/sitemap.xml
+Sitemap: https://rideordieamerica.com/sitemap.xml
