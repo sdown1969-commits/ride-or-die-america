@@ -1,0 +1,96 @@
+{
+  "bundle_id": "2026-10-31-vault-007-journal",
+  "created_at": "2026-10-31T19:40:00-04:00",
+  "created_by": "RODA subagent (website crew)",
+  "purpose": "Add the Vault 007 (Hurricane Sally) journal entry with YouTube embed + cover; open THE LONG ROAD long-form shelf on vault.html with 007 as entry 001 (badge: THE LONG ROAD \u00b7 001 \u2014 NO SHORTCUTS); slot 007 into the Vault timeline chronologically after the Aug 2020 entry (story date September 2020); add the lesson URL to sitemap.xml. Website lane of the Vault 007 barrage (package_id 2026-10-31-vault-007-001).",
+  "commit_message": "Vault journal: add Vault 007 Hurricane Sally entry \u2014 opens THE LONG ROAD long-form shelf (001 \u00b7 NO SHORTCUTS); embed, cover, sitemap",
+  "files": [
+    {
+      "path": "vault.html",
+      "action": "replace",
+      "sha256": "6ae1b50c80378cbdd5acf098e2609f8ebcd8900b0c7aba2abe44c7cc1c25ade9",
+      "required_markers": [
+        "THE LONG ROAD \u2014 Long-Form Films",
+        "THE LONG ROAD \u00b7 001 \u2014 NO SHORTCUTS",
+        "vault-007-hurricane-sally.html",
+        "UnjZv7MpgdY"
+      ],
+      "forbidden_markers": [
+        "recliner",
+        "Ripoff",
+        "bipolar"
+      ]
+    },
+    {
+      "path": "sitemap.xml",
+      "action": "replace",
+      "sha256": "6d15329db9c59e7f0c6622e7e81aa68bc28587970b14b078dfdf933259bb7e66",
+      "required_markers": [
+        "lessons/vault-007-hurricane-sally.html"
+      ],
+      "forbidden_markers": []
+    },
+    {
+      "path": "lessons/vault-007-hurricane-sally.html",
+      "action": "add",
+      "sha256": "8d4224b738444e81aca1b3c45a32d49b16edb7af2d4140fa3127bc53d541feed",
+      "required_markers": [
+        "Hurricane Sally",
+        "UnjZv7MpgdY",
+        "THE LONG ROAD \u00b7 001 \u2014 NO SHORTCUTS",
+        "vault-007-cover.jpg",
+        "PLVNIIAWmc12o",
+        "OUTGROW YESTERDAY"
+      ],
+      "forbidden_markers": [
+        "recliner",
+        "Ripoff",
+        "bipolar"
+      ]
+    },
+    {
+      "path": "assets/vault-007-cover.jpg",
+      "action": "add",
+      "sha256": "a82ef2593e158b79ceef2f654b3924d26304e1192ad90395eabd2ba3a7a13071",
+      "required_markers": [],
+      "forbidden_markers": []
+    }
+  ],
+  "live_checks": [
+    {
+      "url": "https://rideordieamerica.com/lessons/vault-007-hurricane-sally.html",
+      "expect_present": [
+        "Hurricane Sally",
+        "UnjZv7MpgdY",
+        "THE LONG ROAD \u00b7 001 \u2014 NO SHORTCUTS",
+        "vault-007-cover.jpg"
+      ],
+      "expect_absent": [
+        "recliner",
+        "Ripoff"
+      ]
+    },
+    {
+      "url": "https://rideordieamerica.com/vault.html",
+      "expect_present": [
+        "THE LONG ROAD \u2014 Long-Form Films",
+        "THE LONG ROAD \u00b7 001 \u2014 NO SHORTCUTS",
+        "vault-007-hurricane-sally.html"
+      ],
+      "expect_absent": []
+    },
+    {
+      "url": "https://rideordieamerica.com/sitemap.xml",
+      "expect_present": [
+        "vault-007-hurricane-sally"
+      ],
+      "expect_absent": []
+    }
+  ],
+  "revert": {
+    "method": "git-revert-or-restore-previous-file-copies",
+    "previous_copies": "~/workspace/tmp/vault007-publish-backup-oct31/ (pre-change vault.html, sitemap.xml); added files (lesson page, cover) revert by removal as a separate approved operation",
+    "previous_commit": "unknown at bundle time \u2014 record from repo at transport",
+    "notes": "Restore previous copies through the same transport or revert the publish commit in the Codespace and push."
+  }
+}
