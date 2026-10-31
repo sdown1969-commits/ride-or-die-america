@@ -1,0 +1,24 @@
+{
+  "name": "Ride Or Die America \u2014 Coach RODA",
+  "short_name": "Ride Or Die",
+  "description": "Coach RODA \u2014 Ride Or Die America. Solo across America since 2023: 66,000+ miles, one lesson from the road every day. OUTGROW YESTERDAY.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#12100d",
+  "theme_color": "#171410",
+  "icons": [
+    {
+      "src": "assets/ask-roda-avatar.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/hero-cover.jpg",
+      "sizes": "1920x2550",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
