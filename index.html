@@ -14,6 +14,8 @@
 <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://rideordieamerica.com/" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://rideordieamerica.com/sitemap.xml" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="assets/ask-roda-avatar.jpg" />
 <!-- AI search & research crawlers: explicitly welcome indexing so AI assistants can find and cite this site -->
 <meta name="GPTBot" content="index, follow" />
 <meta name="ChatGPT-User" content="index, follow" />
@@ -275,7 +277,13 @@
   /* Hero */
   .hero{position:relative; background:var(--dark); color:#fff}
   .hero img.heroimg{width:100%; height:min(78vh,640px); object-fit:cover; object-position:66% 30%}
-  @media (max-width:640px){ .hero img.heroimg{object-position:58% 30%} }
+  @media (max-width:640px){
+    .hero img.heroimg{height:56vh; object-position:70% 20%}
+    .hero-shade{background:linear-gradient(to top, rgba(10,8,6,.42) 0%, rgba(10,8,6,0) 34%)}
+    .hero-content{position:static; padding:20px 0 30px}
+    .hero h1{font-size:clamp(38px,11.5vw,54px)}
+    .hero-sub{max-width:100%}
+  }
   .hero-shade{position:absolute; inset:0; background:linear-gradient(to top, rgba(10,8,6,.88) 0%, rgba(10,8,6,.38) 46%, rgba(10,8,6,.12) 100%)}
   .hero-content{position:absolute; inset:auto 0 0 0; padding:0 0 34px}
   .hero-kicker{font-weight:700; letter-spacing:.14em; font-size:14px; text-transform:uppercase; color:var(--gold); margin:0 0 8px}
@@ -429,6 +437,35 @@
   .foot-links a{color:#e8dfcd; text-decoration:none; font-weight:600}
   .foot-links a:hover{color:var(--gold)}
   footer small{display:block; margin-top:10px; color:#9a9081}
+
+  /* Shorts wall */
+  .shorts-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+  @media (max-width:960px){ .shorts-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:460px){ .shorts-grid{grid-template-columns:1fr} }
+  .short-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+  .short-frame{position:relative; aspect-ratio:9/16; background:#000}
+  .short-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .short-card .cap{padding:12px 14px; font-weight:600; font-size:15px}
+  .short-card .cap span{display:block; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
+
+  /* Kind words */
+  .kw-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  @media (max-width:860px){ .kw-grid{grid-template-columns:1fr} }
+  .kw{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--gold); border-radius:var(--radius); padding:22px}
+  .kw blockquote{margin:0; font-size:19px; font-weight:600}
+  .kw .who{margin-top:12px; color:var(--ink2); font-size:15px}
+  .kw .who b{color:var(--ink)}
+
+  /* Counters strip */
+  .counters{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+  @media (max-width:760px){ .counters{grid-template-columns:1fr 1fr} }
+  .counter{background:var(--surface2); border-radius:var(--radius); padding:20px; text-align:center}
+  .counter b{display:block; font-family:"Barlow Condensed",sans-serif; font-size:36px; font-weight:700; color:var(--accent); line-height:1}
+  .counter span{font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink2); font-weight:600}
+
+  /* Lesson read-more */
+  .readmore{font-weight:700; text-decoration:none}
+  .readmore:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -442,6 +479,9 @@
       <a href="#road-code">The Road Code</a>
       <a href="#ask-roda">Ask RODA</a>
       <a href="#lessons">Lessons</a>
+      <a href="vault.html">The Vault</a>
+      <a href="map.html">Route Map</a>
+      <a href="press.html">Press</a>
       <a href="#gallery">Gallery</a>
       <a href="#join">Join</a>
       <a href="#speaking">Speaking &amp; Media</a>
@@ -474,7 +514,7 @@
     <div class="stat" role="listitem"><b>66,511.4</b><span>Documented miles</span></div>
     <div class="stat" role="listitem"><b>Day <span id="liveDay">1,275</span></b><span>Days on the road</span></div>
     <div class="stat" role="listitem"><b><span class="livedot" aria-hidden="true"></span>STILL RIDING</b><span>On the road now</span></div>
-    <div class="stat" role="listitem"><b>Oct 28, 2026</b><span>Miles last verified</span></div>
+    <div class="stat" role="listitem"><b>Oct 30, 2026</b><span>Miles last verified</span></div>
   </div>
 
 
@@ -514,6 +554,9 @@
       </div>
       <p style="margin-top:22px">Want first word when they drop? The Road Code hears it first.</p>
       <p><a class="btn" href="https://www.facebook.com/groups/3355436921326857" target="_blank" rel="noopener">Join The Road Code Group</a></p>
+      <p style="display:flex; gap:12px; flex-wrap:wrap"><a class="btn ghost" href="mailto:coach@rideordieamerica.com?subject=Book%20notify%20list%20%E2%80%94%20OUTGROW%20YESTERDAY">Get the Book Notify Email</a>
+      <a class="btn ghost" href="mailto:coach@rideordieamerica.com?subject=Uncomfortable%20Miles%20waitlist">Join the Uncomfortable Miles Waitlist</a></p>
+      <p style="color:var(--ink2); font-size:15px">One email when the books drop — and one when Uncomfortable Miles opens. Nothing else, ever.</p>
     </div>
   </section>
 
@@ -571,6 +614,31 @@
   </section>
 
   <!-- ROAD CODE -->
+  <!-- KIND WORDS FROM THE ROAD -->
+  <section class="section" id="kind-words" style="padding-top:8px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Kind words from the road</h2>
+        <p>The road runs on strangers who open their doors. These are theirs — in their words, and in the record.</p>
+      </div>
+      <div class="kw-grid">
+        <div class="kw">
+          <blockquote>&ldquo;We enjoyed meeting you and wish Safe Journeys!&rdquo;</blockquote>
+          <p class="who"><b>OBHive</b> — Warmshowers host, Outer Banks line, North Carolina. She hosted Coach twice in one week — Oct 4–5 and Oct 7–8, 2026 — and sent this farewell on Oct 9, with photos.</p>
+        </div>
+        <div class="kw">
+          <blockquote>Hosted by Mama D in Georgetown — a full-circle night arranged by her son, Tyler Dillinger, who had hosted Coach in Maine a year and a half earlier.</blockquote>
+          <p class="who"><b>Mama D &amp; Tyler Dillinger</b> — Georgetown, SC · Oct 27–28, 2026. A recovery night at no cost, set up that morning by a man Coach had met on the road 18 months before.</p>
+        </div>
+        <div class="kw">
+          <blockquote>Hosted twice in a single week by the same household — and the door stayed open for the second stay before the first was even cold.</blockquote>
+          <p class="who"><b>The Warmshowers network</b> — the host community that has put a roof over this ride from Reston, Virginia to the South Carolina coast, one night at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="road-code" style="padding-top:8px">
     <div class="wrap">
       <div class="section-head">
@@ -626,6 +694,38 @@
         <p>Every video lives in a series on the <a href="https://www.youtube.com/@rideordieamerica" target="_blank" rel="noopener">Ride Or Die America YouTube channel</a>, so you can follow the journey episode by episode instead of scrolling a random feed.</p>
       </div>
       <div class="lessons-grid">
+        <article class="lesson">
+          <div class="lesson-body">
+            <span class="count">Field Film · Oct 28, 2026 · Day 1,275 · Myrtle Beach, SC</span>
+            <h3>The Road Out</h3>
+            <p>Two minutes of pure riding out of Myrtle Beach — and the difference between running from your life and riding toward it. "I ain't lost. I'm just between the man I was and mine."</p>
+            <p><a class="readmore" href="lessons/bridge-the-road-out.html">Read the full lesson →</a> · <a class="readmore" href="https://www.youtube.com/shorts/8XAhYLzhqDU" target="_blank" rel="noopener">Watch the film →</a></p>
+          </div>
+        </article>
+        <article class="lesson">
+          <div class="lesson-body">
+            <span class="count">From The Vault 005 · Oct 29, 2024 · Samuel P. Taylor, California Coast</span>
+            <h3>Two Years. Same Road.</h3>
+            <p>October 29, 2024. Samuel P. Taylor, on the California coast. Same bike. Same trailer. Same man who refused to quit — two years ago, and still refusing. You don't break free once. You break free daily.</p>
+            <p><a class="readmore" href="lessons/vault-005-two-years-same-road.html">Read the full Vault 005 lesson →</a></p>
+          </div>
+        </article>
+        <article class="lesson">
+          <div class="lesson-body">
+            <span class="count">Latest lesson · Oct 30, 2026 · Day 1,277 · Buck Hall, SC</span>
+            <h3>Hurtin'. Still Setting Up Camp.</h3>
+            <p>Campsite down by the river. Body's screaming. And the camp still goes up — because stopping was never the deal. "Uncomfortable miles cost a lot. Outgrowing yesterday costs everything."</p>
+            <p><a class="readmore" href="lessons/beast-uncomfortable-miles.html">Read the full lesson →</a> · <a class="readmore" href="vault.html">All Vault entries →</a></p>
+          </div>
+        </article>
+        <article class="lesson">
+          <div class="lesson-body">
+            <span class="count">Latest lesson · Oct 30, 2026 · Day 1,277 · McClellanville, SC</span>
+            <h3>No Office. No Wi-Fi. Still in Business.</h3>
+            <p>Everything he runs — the book, the brand, the road — runs off a laptop, a tent, and a T-Mobile hotspot. Not an ad. Just gratitude.</p>
+            <p><a class="readmore" href="lessons/tmobile-gratitude-no-office.html">Read the full lesson →</a></p>
+          </div>
+        </article>
         <article class="lesson featured">
           <img class="pos-70" src="assets/night-one-2019.jpg" alt="Real video frame — Coach RODA filming himself at night in the mining camp, Sept 28, 2019, Nevada desert" loading="lazy" /><span class="real-tag">From The Vault — 2019</span>
           <div class="lesson-body">
@@ -659,6 +759,7 @@
               <a class="watch" href="https://www.instagram.com/reel/DfF3znNDruw/" target="_blank" rel="noopener">Watch on Instagram (@sdown169) →</a>
               <a class="watch" href="https://www.threads.com/@rideordieamerica/post/DfF4EMqjijP" target="_blank" rel="noopener">Watch on Threads →</a>
             </div>
+            <p style="margin-top:10px"><a class="readmore" href="lessons/vault-004-day-13-no-plan-b.html">Read the full Vault 004 lesson →</a></p>
           </div>
         </article>
         <article class="lesson">
@@ -672,6 +773,7 @@
             <p>That's the lesson, and it's not really about a bicycle. A forced day off is not a stop. Broke is a condition, not a verdict. Whatever your version of the tent is — the waiting room, the couch, the bench — the question is the one he asks the camera: what do you do? You build your business. You build your body back. You build the next version of your life with whatever is already in your hands.</p>
             <p>"Bigger, better, stronger, harder, faster. Watch out world. I'm coming. We're coming. Let's build it together."</p>
             <p>The mission runs on miles — and on the people who believe in them. Fuel it at rideordieamerica.com</p>
+            <p style="margin-top:10px"><a class="readmore" href="lessons/day-1276-forced-to-stop.html">Read the full Day 1,276 lesson →</a> · <a class="readmore" href="https://youtube.com/shorts/xN6A8xrLA8o" target="_blank" rel="noopener">Watch the Short on YouTube →</a></p>
           </div>
         </article>
         <article class="lesson">
@@ -805,6 +907,48 @@
             <a class="watch" href="https://www.youtube.com/playlist?list=PLIXl-wH6aXyI" target="_blank" rel="noopener">Watch the playlist on YouTube →</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VAULT INDEX TEASER -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="join-band">
+        <div>
+          <h2>From The Vault — the whole series</h2>
+          <p>Every Vault entry in order — Night One in 2019 to the California coast and beyond. Real frames, real dates, chronological proof.</p>
+        </div>
+        <a class="btn" href="vault.html">Open The Vault</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST FROM THE ROAD — SHORTS WALL -->
+  <section class="section" id="latest" style="padding-top:8px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Latest from the road</h2>
+        <p>The newest Shorts, straight off the road — watch them here, then follow <a href="https://www.youtube.com/@rideordieamerica" target="_blank" rel="noopener">@rideordieamerica</a> for tomorrow's.</p>
+      </div>
+      <div class="shorts-grid">
+        <div class="short-card">
+          <div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/dX9zrONVtE4" title="The Office Opens — morning routine, Day 1,277" loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="cap"><span>Day 1,277 · The Morning</span>The Office Opens</p>
+        </div>
+        <div class="short-card">
+          <div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/0Q8F5ACrFOs" title="Coach RODA and Muse — the partnership piece" loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="cap"><span>Day 1,277 · The Partnership</span>Built with RODA, my Muse</p>
+        </div>
+        <div class="short-card">
+          <div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/CLpR59yMPac" title="FROM THE VAULT 004 — Day 13. No Plan B." loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="cap"><span>From The Vault 004 · Oct 2019</span>Day 13. No Plan B.</p>
+        </div>
+        <div class="short-card">
+          <div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/xN6A8xrLA8o" title="Day 1,276 — Forced to Stop. So He Built Instead." loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="cap"><span>Day 1,276 · The Lesson</span>Forced to Stop. So He Built Instead.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1086,6 +1230,22 @@
   </section>
 
   <!-- FOLLOW -->
+  <section class="section" id="by-the-numbers" style="padding-top:8px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>The road, by the numbers</h2>
+        <p>Platform counts as of Oct 30, 2026 — small numbers, all earned one person at a time.</p>
+      </div>
+      <div class="counters">
+        <div class="counter"><b>93</b><span>Instagram followers · @rideordieamerica</span></div>
+        <div class="counter"><b>110</b><span>YouTube subscribers</span></div>
+        <div class="counter"><b>14</b><span>TikTok followers</span></div>
+        <div class="counter"><b>24</b><span>Road Code group members</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="follow" style="padding-top:8px">
     <div class="wrap">
       <div class="section-head">
@@ -1113,6 +1273,9 @@
       <a href="#story">The Story</a>
       <a href="#road-code">The Road Code</a>
       <a href="#lessons">Lessons</a>
+      <a href="vault.html">The Vault</a>
+      <a href="map.html">Route Map</a>
+      <a href="press.html">Press</a>
       <a href="#gallery">Gallery</a>
       <a href="#speaking">Speaking &amp; Media</a>
       <a href="#faq">FAQ</a>

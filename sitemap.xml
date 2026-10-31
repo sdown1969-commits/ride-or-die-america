@@ -2,12 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rideordieamerica.com/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/vault.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/map.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/press.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/vault-005-two-years-same-road.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/beast-uncomfortable-miles.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/tmobile-gratitude-no-office.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/vault-004-day-13-no-plan-b.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/day-1276-forced-to-stop.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rideordieamerica.com/media-kit.html</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/lessons/bridge-the-road-out.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
 </urlset>
