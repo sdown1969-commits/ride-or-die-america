@@ -4,18 +4,18 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Route Map — He's Coming Your Way | Coach RODA · Ride Or Die America</title>
-<meta name="description" content="Coach RODA's forward route corridor — Charleston to Key West, South Padre Island, San Diego, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin.">
+<meta name="description" content="Coach RODA's forward route corridor — Charleston to Key West, the Arkansas High Country, South Padre Island, the Utah Cliffs, Idaho, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://rideordieamerica.com/map.html" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Ride Or Die America" />
 <meta property="og:url" content="https://rideordieamerica.com/map.html" />
 <meta property="og:title" content="Route Map — He's Coming Your Way | Coach RODA · Ride Or Die America" />
-<meta property="og:description" content="Coach RODA's forward route corridor — Charleston to Key West, South Padre Island, San Diego, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin." />
+<meta property="og:description" content="Coach RODA's forward route corridor — Charleston to Key West, the Arkansas High Country, South Padre Island, the Utah Cliffs, Idaho, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin." />
 <meta property="og:image" content="https://rideordieamerica.com/assets/hero-cover.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Route Map — He's Coming Your Way | Coach RODA · Ride Or Die America" />
-<meta name="twitter:description" content="Coach RODA's forward route corridor — Charleston to Key West, South Padre Island, San Diego, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin." />
+<meta name="twitter:description" content="Coach RODA's forward route corridor — Charleston to Key West, the Arkansas High Country, South Padre Island, the Utah Cliffs, Idaho, and Prudhoe Bay, Alaska — with a vicinity tracker that shows the area he's rolling through, never a live pin." />
 <meta name="twitter:image" content="https://rideordieamerica.com/assets/hero-cover.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -308,7 +308,7 @@
     <div class="wrap">
       <p class="kicker">The Road Ahead · Vicinity Tracker</p>
       <h1>He's Coming Your Way</h1>
-      <p class="meta-line">Charleston → Key West → South Padre Island → San Diego → Prudhoe Bay, Alaska</p>
+      <p class="meta-line">Charleston → Key West → Arkansas High Country → South Padre Island → Utah Cliffs → Idaho → The Border → Prudhoe Bay, Alaska</p>
     </div>
   </section>
   <section class="section">
@@ -320,7 +320,7 @@
         <p><strong>Current vicinity:</strong> near Buck Hall / McClellanville, SC — rolling toward Charleston Oct 31–Nov 1.</p>
       </div>
       <div id="map" role="application" aria-label="Map of Coach RODA's forward route corridor across America, with a large vicinity circle in coastal South Carolina"></div>
-      <p style="margin-top:14px; color:var(--ink2)">The line is the declared road ahead: Charleston, SC → Key West, FL → South Padre Island, TX → San Diego, CA → Prudhoe Bay, AK (with a possible Cabo San Lucas detour, dashed). The counter is a checkpoint, never the story's final number — he's Ride Or Die forever.</p>
+      <p style="margin-top:14px; color:var(--ink2)">The line is the declared road ahead: CHARLESTON, SC → KEY WEST, FL → ARKANSAS HIGH COUNTRY, AR → SOUTH PADRE ISLAND, TX → UTAH CLIFFS LOOP, UT → IDAHO HOT SPRINGS, ID → THE BORDER → PRUDHOE BAY, AK. The counter is a checkpoint, never the story's final number — he's Ride Or Die forever.</p>
       <div class="cta-band">
         <h3>He's coming your way</h3>
         <p>When Coach rolls through a town, The Road Code hears about it first — the route, the stops, the meet-ups. Join the group and know when he's headed your way.</p>
@@ -338,14 +338,14 @@
   var stops = [
     { name: 'Charleston, SC', ll: [32.78, -79.93] },
     { name: 'Key West, FL — checkpoint, not the end', ll: [24.56, -81.78] },
+    { name: 'Arkansas High Country, AR', ll: [36.23, -93.11] },
     { name: 'South Padre Island, TX', ll: [26.11, -97.17] },
-    { name: 'San Diego, CA', ll: [32.72, -117.16] },
+    { name: 'Utah Cliffs Loop, UT', ll: [37.05, -112.53] },
+    { name: 'Idaho Hot Springs, ID', ll: [43.83, -115.83] },
     { name: 'Prudhoe Bay, AK — the far end of the road', ll: [70.26, -148.34] }
   ];
   var line = L.polyline(stops.map(function(s){ return s.ll; }), { color: '#c2510a', weight: 4, opacity: 0.9 }).addTo(map);
   stops.forEach(function(s){ L.marker(s.ll).addTo(map).bindPopup('<b>' + s.name + '</b>'); });
-  var cabo = L.polyline([[32.72, -117.16], [22.89, -109.92]], { color: '#e8a33d', weight: 3, dashArray: '6 8', opacity: 0.8 }).addTo(map);
-  L.marker([22.89, -109.92]).addTo(map).bindPopup('<b>Cabo San Lucas — possible detour</b>');
   var vicinity = L.circle([32.95, -79.66], {
     radius: 40234, color: '#e8a33d', weight: 2, opacity: 0.9, fillColor: '#e8a33d', fillOpacity: 0.18
   }).addTo(map).bindPopup("<b>Coach's current vicinity</b><br>Near Buck Hall / McClellanville, SC — rolling toward Charleston Oct 31–Nov 1.<br>Updated by leg, never a live pin.");
