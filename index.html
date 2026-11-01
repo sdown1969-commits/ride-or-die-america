@@ -617,23 +617,49 @@
       <div class="section-head">
         <div class="rule"></div>
         <h2>Kind words from the road</h2>
-        <p>The road runs on strangers who open their doors. One in her own words; the rest, in the record.</p>
+        <p>The road runs on strangers who open their doors — in their own words, from the hosts who took this ride in.</p>
       </div>
-      <div class="kw-grid">
+      <div class="kw-grid" id="kwGrid">
         <div class="kw">
-          <blockquote>&ldquo;We enjoyed meeting you and wish Safe Journeys!&rdquo;</blockquote>
-          <p class="who"><b>OBHive</b> — Warmshowers host, Outer Banks line, North Carolina. She hosted Coach twice in one week — Oct 4–5 and Oct 7–8, 2026 — and sent this farewell on Oct 9, with photos.</p>
+          <blockquote>&ldquo;I believe Sean is the bravest cyclist I have ever hosted.&rdquo;</blockquote>
+          <p class="who"><b>Deb Young</b> — Richmond · WarmShowers host</p>
         </div>
         <div class="kw">
-          <p>A full-circle night in Georgetown — arranged by her son, Tyler Dillinger, who had hosted Coach in Maine a year and a half earlier.</p>
-          <p class="who"><b>Mama D &amp; Tyler Dillinger</b> — Georgetown, SC · Oct 27–28, 2026. A recovery night at no cost, set up that morning by a man Coach had met on the road 18 months before.</p>
+          <blockquote>&ldquo;Sean is the most hardcore rider I have ever met. His life is riding.&rdquo;</blockquote>
+          <p class="who"><b>Bill Taylor</b> — Southport · WarmShowers host</p>
         </div>
         <div class="kw">
-          <p>Hosted twice in a single week by the same household — and the door stayed open for the second stay before the first was even cold.</p>
-          <p class="who"><b>The Warmshowers network</b> — the host community that has put a roof over this ride from Reston, Virginia to the South Carolina coast, one night at a time.</p>
+          <blockquote>&ldquo;This man has more than stories to tell. He is alive with his dreams, too.&rdquo;</blockquote>
+          <p class="who"><b>JT Hine</b> — Williamsburg · WarmShowers host</p>
         </div>
       </div>
+      <p style="margin-top:18px; color:var(--ink2); font-size:15px">Drawn from <b style="color:var(--ink)">80 five-star host reviews on WarmShowers</b> — a new set rotates in every four days.</p>
     </div>
+    <script>
+    (function () {
+      var KW_SETS = [[{"q": "I believe Sean is the bravest cyclist I have ever hosted.", "n": "Deb Young", "t": "Richmond"}, {"q": "Sean is the most hardcore rider I have ever met. His life is riding.", "n": "Bill Taylor", "t": "Southport"}, {"q": "This man has more than stories to tell. He is alive with his dreams, too.", "n": "JT Hine", "t": "Williamsburg"}], [{"q": "Sean is the strongest bike rider I have ever met.", "n": "Bob Reynolds", "t": "Sun City West"}, {"q": "What an amazing story of travel, endurance and mental toughness he has to tell, and tell it in a fascinating way!", "n": "Rory H.", "t": "South Bend"}, {"q": "What a joy to be a part of Sean's journey. He was the perfect guest.", "n": "Chris", "t": "Arlington"}], [{"q": "He is one of the most true and hardcore bike-packers we have met. It was like hosting a celebrity.", "n": "Liz at Simple Roots", "t": "Vernonia"}, {"q": "His drive, personal grit and easy manner … made his visit memorable and inspiring.", "n": "Maggie Scheffer", "t": "Iron River"}, {"q": "He had me laughing and leaving me in awe of his trials on his ride across America.", "n": "Mel and Erika", "t": "Tucumcari"}], [{"q": "The Hulk Hogan of endurance cyclists.", "n": "Sam & Susan Patterson", "t": "Vermilion"}, {"q": "He is respectful, thoughtful and is interested in hearing your personal perspective on life and your own experiences.", "n": "Bart Osgood", "t": "CUMBERLAND FORESIDE"}, {"q": "Sean is the perfect WS guest. Adaptable, thoughtful, interesting and interested.", "n": "Patrick Street", "t": "East Moline"}]];
+      var grid = document.getElementById('kwGrid');
+      if (!grid) return;
+      var setIndex = Math.floor(Math.floor(Date.now() / 86400000) / 4) % KW_SETS.length;
+      var set = KW_SETS[setIndex];
+      grid.innerHTML = '';
+      set.forEach(function (item) {
+        var card = document.createElement('div');
+        card.className = 'kw';
+        var bq = document.createElement('blockquote');
+        bq.textContent = '\u201C' + item.q + '\u201D';
+        var who = document.createElement('p');
+        who.className = 'who';
+        var b = document.createElement('b');
+        b.textContent = item.n;
+        who.appendChild(b);
+        who.appendChild(document.createTextNode(' \u2014 ' + item.t + ' \u00B7 WarmShowers host'));
+        card.appendChild(bq);
+        card.appendChild(who);
+        grid.appendChild(card);
+      });
+    })();
+    </script>
   </section>
 
   <section class="section" id="book">
