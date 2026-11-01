@@ -74,4 +74,14 @@
     <loc>https://rideordieamerica.com/lessons/bridge-the-road-out.html</loc>
     <lastmod>2026-10-31</lastmod>
   </url>
+  <url>
+    <loc>https://rideordieamerica.com/coach-map.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rideordieamerica.com/routes.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.8</priority>
+  </url>
 </urlset>
