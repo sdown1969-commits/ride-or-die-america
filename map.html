@@ -324,6 +324,7 @@
       </div>
       <div id="map" role="application" aria-label="Map of Coach RODA's forward route corridor across America, with a large vicinity circle in coastal South Carolina"></div>
       <p style="margin-top:14px; color:var(--ink2)">The line is the declared road ahead: CHARLESTON, SC → KEY WEST, FL → ARKANSAS HIGH COUNTRY, AR → SOUTH PADRE ISLAND, TX → UTAH CLIFFS LOOP, UT → IDAHO HOT SPRINGS, ID → THE BORDER → PRUDHOE BAY, AK. The counter is a checkpoint, never the story's final number — he's Ride Or Die forever.</p>
+      <p style="margin-top:10px; color:var(--ink2)">🍔 One gold-dot stop sits off the line, on a friend's word: <strong>Birmingham, AL — Blaze Burgers</strong>, where Lee Locs says the burgers are on him whenever Coach comes through. Coach aims to collect — up the Underground Railroad, then cut over.</p>
       <div class="cta-band">
         <h3>He's coming your way</h3>
         <p>When Coach rolls through a town, The Road Code hears about it first — the route, the stops, the meet-ups. Join the group and know when he's headed your way.</p>
@@ -349,6 +350,10 @@
   ];
   var line = L.polyline(stops.map(function(s){ return s.ll; }), { color: '#c2510a', weight: 4, opacity: 0.9 }).addTo(map);
   stops.forEach(function(s){ L.marker(s.ll).addTo(map).bindPopup('<b>' + s.name + '</b>'); });
+  var friends = [
+    { name: 'Birmingham, AL — Blaze Burgers', ll: [33.52, -86.80], note: "Lee Locs told Coach: 'whenever you come through Birmingham I got the burgers.' A friend of the road — Coach aims to cut over on the Underground Railroad leg and collect." }
+  ];
+  friends.forEach(function(s){ L.circleMarker(s.ll, { radius: 8, color: '#171410', weight: 2, fillColor: '#e8a33d', fillOpacity: 0.95 }).addTo(map).bindPopup('<b>' + s.name + '</b><br>' + s.note); });
   var vicinity = L.circle([32.95, -79.66], {
     radius: 40234, color: '#e8a33d', weight: 2, opacity: 0.9, fillColor: '#e8a33d', fillOpacity: 0.18
   }).addTo(map).bindPopup("<b>Coach's current vicinity</b><br>Near Buck Hall / McClellanville, SC — rolling toward Charleston Oct 31–Nov 1.<br>Updated by leg, never a live pin.");
