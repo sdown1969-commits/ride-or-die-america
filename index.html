@@ -303,6 +303,12 @@
   .stat + .stat{border-left:1px solid rgba(255,255,255,.14)}
   .stat b{display:block; font-family:"Barlow Condensed",sans-serif; font-size:clamp(26px,4vw,38px); font-weight:700; color:var(--gold); line-height:1}
   .stat span{font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#d8d0c0}
+  .season-band{background:var(--gold); color:#171410}
+  .season-band-in{display:flex; gap:18px; align-items:center; flex-wrap:wrap; padding:16px 0}
+  .season-band b{font-family:"Barlow Condensed",sans-serif; font-size:clamp(22px,3.4vw,30px); font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:1}
+  .season-band p{margin:0; font-weight:600; font-size:16px; flex:1 1 320px}
+  .season-band .btn{background:#171410; border-color:#171410; color:#fff}
+  .season-band .btn:hover{filter:brightness(1.25)}
   .livedot{display:inline-block; width:12px; height:12px; margin-right:9px; border-radius:50%; background:#57e389; vertical-align:baseline; animation:livepulse 1.8s ease-in-out infinite}
   @keyframes livepulse{0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(87,227,137,.55)}50%{opacity:.55; box-shadow:0 0 0 7px rgba(87,227,137,0)}}
   @media (max-width:640px){ .stats{grid-template-columns:1fr 1fr} .stat:nth-child(3){border-left:none} .stat{border-top:1px solid rgba(255,255,255,.14)} .stat:nth-child(-n+2){border-top:none} }
@@ -516,6 +522,14 @@
       </div>
     </div>
   </section>
+  <!-- PROVING SEASON BANNER -->
+  <div class="season-band">
+    <div class="wrap season-band-in">
+      <b>The Proving Season</b>
+      <p>The Starter Manual is live — $19. THE MIRROR — 28 DAYS OF PROOF rides free with it through December 31. Proof before the promise.</p>
+      <a class="btn small" href="proving-season.html">Enter the Season</a>
+    </div>
+  </div>
   <div class="stats" role="list" aria-label="Journey proof — live counter">
     <div class="stat" role="listitem"><b>66,677.0</b><span>Documented miles — this tour, by receipt</span></div>
     <div class="stat" role="listitem"><b>Day <span id="liveDay">1,289</span></b><span>Days on the road</span></div>
