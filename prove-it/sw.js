@@ -1,6 +1,6 @@
 /* PROVE IT — service worker. Cache-first: after first load, the whole app —
    books included — reads offline. Bump VERSION to ship an update. */
-var VERSION = 'proveit-v2';
+var VERSION = 'proveit-v3';
 var CORE = [
   './',
   'index.html',
