@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PROVE IT — Proving Season</title>
+<meta name="description" content="The Proving Season in your pocket. Two clocks, one question: what did you prove today?">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header id="topbar">
+  <a class="brand" href="#/">PROVE&nbsp;IT</a>
+  <span id="season-chip" class="chip"></span>
+  <button id="theme-btn" class="ghost-btn" aria-label="Toggle light and dark">◐</button>
+</header>
+
+<main id="view" aria-live="polite"></main>
+
+<nav id="tabbar">
+  <a href="#/" data-tab="home">Today</a>
+  <a href="#/read" data-tab="read">Books</a>
+  <a href="#/checkin" data-tab="checkin">Prove</a>
+  <a href="#/receipts" data-tab="receipts">Receipts</a>
+  <a href="#/board" data-tab="board">Board</a>
+</nav>
+
+<div id="install-banner" hidden>
+  <p><strong>Put it on your home screen.</strong><br>
+  iPhone: tap Share, then “Add to Home Screen.” Android: tap ⋮, then “Add to Home screen.” Works offline after that — books and all.</p>
+  <button id="install-dismiss" class="ghost-btn">Got it</button>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
