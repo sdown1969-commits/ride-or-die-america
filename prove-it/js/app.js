@@ -50,6 +50,71 @@
   function view() { return document.getElementById('view'); }
   function html(h) { view().innerHTML = h; window.scrollTo(0, 0); }
   function today() { return PI.todayISO(); }
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function fmtDate(iso) { // '2027-01-12' -> 'Jan 12, 2027' (raw ISO is machine-talk)
+    if (!iso) return '\u2014';
+    var d = new Date(PI.parseISO(iso));
+    return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+  function phaseLabel(phase) {
+    return { starter: 'Starter days \u2014 1 to 28', mirror: 'Mirror days \u2014 29 to 56', finished: 'Finished \u2014 the 56 are on the record', 'not-started': 'Not started' }[phase] || phase;
+  }
+
+  /* ---------- THE DAILY CARD (hard program: five boxes, every day) ---------- */
+  function chapterForDay(day) {
+    var books = [BOOKS.starter, BOOKS.mirror];
+    for (var i = 0; i < books.length; i++) {
+      var b = books[i];
+      if (!b || !b.chapters) continue;
+      for (var j = 0; j < b.chapters.length; j++) {
+        if (b.chapters[j].card && b.chapters[j].card.day === day) return b.chapters[j];
+      }
+    }
+    return null;
+  }
+  function kindLabel(kind) {
+    return { build: 'build day', long: 'long day', recovery: 'active recovery' }[kind] || kind;
+  }
+  // Renders the five-box card that rides on a day chapter.
+  function cardHTML(ch) {
+    if (!ch || !ch.card) return '';
+    var c = ch.card, e = c.endurance, s = c.strength;
+    var week = ch.endurance && ch.endurance.weekIntro
+      ? '<p class="dim">' + esc(ch.endurance.weekIntro) + '</p>' : '';
+    return '<div class="card program-card"><h2 style="margin-top:0">Today\u2019s card \u2014 Day ' + c.day +
+      ' <span class="dim" style="font-size:14px">' + (c.day <= 28 ? 'The Starter \u2014 hard from Day 1' : 'PROVE IT 56 \u2014 the full protocol') + '</span></h2>' + week +
+      '<div class="box"><div class="box-h">Box 1 \u2014 Endurance</div>' +
+      '<p><strong>' + e.minutes + ' minutes \u00b7 ' + esc(kindLabel(e.kind)) + '.</strong> ' + esc(e.standard) + '</p>' +
+      '<p>' + esc(e.instruction) + '</p>' +
+      '<p class="dim">Roof version: ' + esc(e.fallback) + '</p>' +
+      '<p class="dim">' + esc(e.excuseKiller) + '</p></div>' +
+      '<div class="box"><div class="box-h">Box 2 \u2014 Strength \u00b7 ' + esc(s.focus) + '</div>' +
+      '<p>' + esc(s.assignment) + '</p>' +
+      (s.pack ? '<p class="dim">' + esc(s.pack) + '</p>' : '') + '</div>' +
+      '<div class="box"><div class="box-h">Box 3 \u2014 Listening</div>' +
+      '<p>' + esc(c.listening.teaching) + '</p><p>' + esc(c.listening.song) + '</p>' +
+      '<p class="dim">' + esc(c.listening.minutes) + '</p></div>' +
+      '<div class="box"><div class="box-h">Box 4 \u2014 The Line</div><p>' + esc(c.line) + '</p></div>' +
+      '<div class="box"><div class="box-h">Box 5 \u2014 Proof</div><p>' + esc(c.proof) + '</p></div>' +
+      '<p class="dim" style="margin-bottom:0">' + esc(c.missLine) + '</p></div>';
+  }
+  // The filing panel at the top of the Prove tab: today's rung in one
+  // glance, with the walk log (minutes + road/roof) and the strength
+  // check riding inside the check-in form itself. The full card renders
+  // below the form for reference.
+  function filingPanel(ch) {
+    var c = ch.card, e = c.endurance, s = c.strength;
+    return '<div class="card" style="margin-top:0"><h2 style="margin-top:0">File today\u2019s card \u2014 Day ' + c.day + '</h2>' +
+      '<p><strong>' + e.minutes + ' minutes \u00b7 ' + esc(kindLabel(e.kind)) + '.</strong> ' + esc(e.instruction) + '</p>' +
+      '<label>Minutes you actually walked</label>' +
+      '<input type="text" inputmode="numeric" id="c-minutes" value="' + e.minutes + '">' +
+      '<label>Where</label><div class="seg" style="margin-bottom:8px">' +
+      '<button type="button" id="c-mode-road" class="on">Road \u2014 outdoors</button>' +
+      '<button type="button" id="c-mode-roof">Roof \u2014 indoors</button></div>' +
+      '<p class="dim" style="margin:10px 0 2px">Strength \u00b7 ' + esc(s.focus) + ' (full assignment on the card below)</p>' +
+      '<label style="text-transform:none; letter-spacing:0; font-size:15px; color:var(--ink)">' +
+      '<input type="checkbox" id="c-strength" style="width:auto"> Strength work done \u2014 the whole assignment, or the door-in version of it.</label></div>';
+  }
 
   function seasonChip() {
     var t = today();
@@ -109,7 +174,7 @@
       '<div class="stat"><div class="n">' + (pd ? Math.min(pd, 56) : '\u2014') + '</div><div class="l">Your day of 56</div></div>' +
       '<div class="stat"><div class="n">' + s.streak + '</div><div class="l">Streak</div></div>' +
       '<div class="stat"><div class="n">' + s.verifiedDays + '</div><div class="l">Days proven</div></div></div>' +
-      '<p class="dim">Phase: ' + esc(PI.buyerPhase(u.programStartISO, t)) + ' \u00b7 your window closes ' + esc(PI.buyerWindowEnd(u.programStartISO) || '\u2014') + '</p></div>' +
+      '<p class="dim">Phase: ' + esc(phaseLabel(PI.buyerPhase(u.programStartISO, t))) + ' \u00b7 your window closes ' + esc(fmtDate(PI.buyerWindowEnd(u.programStartISO))) + '</p></div>' +
       '<a class="btn" href="#/checkin">Prove today</a>' +
       '<a class="btn secondary" href="#/receipts">See my receipts card</a>';
     html(head + mine + sig());
@@ -168,8 +233,8 @@
       '<input type="text" id="ac-txn" value="' + esc(u.transactionId || '') + '">' +
       '<button class="btn" type="submit">Save</button></form>' +
       '<div class="card"><div class="kv"><span>Starter Manual</span><strong>' + (u.entitlement && u.entitlement.starter ? 'Open' : 'Locked') + '</strong></div>' +
-      '<div class="kv"><span>THE MIRROR</span><strong>' + (u.entitlement && u.entitlement.mirror ? 'Unlocks ' + esc(u.entitlement.mirrorUnlockISO) : 'Not on this purchase') + '</strong></div>' +
-      '<div class="kv"><span>Your 56 started</span><strong>' + esc(u.programStartISO || '\u2014') + '</strong></div></div>' +
+      '<div class="kv"><span>THE MIRROR</span><strong>' + (u.entitlement && u.entitlement.mirror ? 'Unlocks ' + esc(fmtDate(u.entitlement.mirrorUnlockISO)) : 'Not on this purchase') + '</strong></div>' +
+      '<div class="kv"><span>Your 56 started</span><strong>' + esc(fmtDate(u.programStartISO)) + '</strong></div></div>' +
       '<button class="btn secondary" id="btn-logout">Log out</button>' + sig());
     document.getElementById('f-account').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -194,14 +259,17 @@
     var starter = BOOKS.starter, mirror = BOOKS.mirror;
     var mirrorOpen = PI.mirrorUnlocked(u.entitlement, t);
     var chRows = starter.chapters.map(function (c, i) {
-      return '<div class="kv"><a href="#/read/starter/' + c.id + '">' + esc(c.title) + '</a><span class="dim">' + esc(c.unit || '') + '</span></div>';
+      return '<div class="kv"><a href="#/read/starter/' + c.id + '">' + esc(c.title) + '</a><span class="dim">' + esc(c.unit || '') + (c.slot ? ' <span class="pill">in the chair</span>' : '') + '</span></div>';
+    }).join('');
+    var mRows = (mirror.chapters || []).map(function (c) {
+      return '<div class="kv"><a href="#/read/mirror/' + c.id + '">' + esc(c.title) + '</a><span class="dim">' + esc(c.unit || '') + (c.slot ? ' <span class="pill">in the chair</span>' : '') + '</span></div>';
     }).join('');
     html('<h1>The shelf</h1>' +
       '<div class="card"><h2 style="margin-top:0">' + esc(starter.title) + '</h2><p class="dim">' + esc(starter.subtitle) + '</p>' + chRows + '</div>' +
       '<div class="card"><h2 style="margin-top:0">' + esc(mirror.title) + '</h2><p class="dim">' + esc(mirror.subtitle) + '</p>' +
       (mirrorOpen
-        ? '<p class="good">Open. It\u2019s Dec 31 \u2014 the Mirror is yours.</p>'
-        : '<p>Locked. ' + esc(mirror.lockedNote) + '</p><p class="gold">' + PI.daysToMirror(u.entitlement, t) + ' days to the unlock.</p>') +
+        ? '<p class="good">Open. It\u2019s Dec 31 \u2014 the Mirror is yours.</p>' + mRows
+        : '<p>Locked. ' + esc(mirror.lockedNote) + '</p><p class="gold">' + PI.daysToMirror(u.entitlement, t) + (PI.daysToMirror(u.entitlement, t) === 1 ? ' day' : ' days') + ' to the unlock.</p>') +
       '</div>' +
       '<p class="dim">Everything on this shelf reads offline once you\u2019ve opened it \u2014 dead zones don\u2019t get a vote.</p>' + sig());
   }
@@ -225,6 +293,7 @@
       '<button class="ghost-btn" id="f-minus">A\u2212</button><button class="ghost-btn" id="f-plus">A+</button>' +
       '<span class="dim" id="resume-note"></span></div>' +
       '<div class="reader" id="reader-body" style="--reader-size:' + size + 'px; font-size:' + size + 'px">' + paras + '</div>' +
+      (ch.card ? cardHTML(ch) : '') +
       '<div style="display:flex; gap:8px; justify-content:space-between; margin-top:18px">' + prev + next + '</div>' + sig());
     function applySize(s) {
       size = Math.max(15, Math.min(26, s));
@@ -259,9 +328,12 @@
     var u = me(), t = today();
     var mine = store.checkinsFor(u.id).filter(function (c) { return c.dateISO === t; });
     var done = mine.length > 0;
+    var pd = PI.buyerProgramDay(u.programStartISO, t);
+    var todayCh = pd ? chapterForDay(pd) : null;
     html('<h1>Prove today.</h1>' +
       (done ? '<div class="ok">Today\u2019s receipt is in \u2014 status: ' + esc(mine[0].status) + '. Add another and it stacks as a proof post; the day still counts once.</div>' : '') +
       '<form id="f-checkin">' +
+      (todayCh ? filingPanel(todayCh) : '') +
       '<label>One line \u2014 what did you prove today?</label>' +
       '<textarea id="c-statement" required placeholder="Ran the miles. Did the work. No excuses."></textarea>' +
       '<label>Proof \u2014 photo or link. Proof or it didn\u2019t happen.</label>' +
@@ -269,8 +341,21 @@
       '<div id="proof-photo-row"><input type="file" id="c-photo" accept="image/*"></div>' +
       '<div id="proof-link-row" hidden><input type="url" id="c-link" placeholder="https://\u2026 (workout post, video, group thread)"></div>' +
       '<div id="c-err"></div><button class="btn" type="submit">File my receipt</button></form>' +
+      (todayCh ? cardHTML(todayCh) : '') +
       '<div class="perm">' + esc(PERMISSION_LINE) + '</div>' + sig());
     var mode = 'photo';
+    var walkMode = 'road';
+    var roadBtn = document.getElementById('c-mode-road'), roofBtn = document.getElementById('c-mode-roof');
+    if (roadBtn && roofBtn) {
+      roadBtn.addEventListener('click', function () {
+        walkMode = 'road';
+        roadBtn.classList.add('on'); roofBtn.classList.remove('on');
+      });
+      roofBtn.addEventListener('click', function () {
+        walkMode = 'roof';
+        roofBtn.classList.add('on'); roadBtn.classList.remove('on');
+      });
+    }
     document.getElementById('pt-photo').addEventListener('click', function () {
       mode = 'photo';
       this.classList.add('on'); document.getElementById('pt-link').classList.remove('on');
@@ -285,7 +370,15 @@
       e.preventDefault();
       var statement = document.getElementById('c-statement').value;
       function finish(proofRef) {
-        settle(store.addCheckin(u.id, { statement: statement, proofType: mode, proofRef: proofRef }, t), function (r) {
+        var minsEl = document.getElementById('c-minutes');
+        var mins = minsEl ? parseInt(minsEl.value, 10) : NaN;
+        var strengthEl = document.getElementById('c-strength');
+        settle(store.addCheckin(u.id, {
+          statement: statement, proofType: mode, proofRef: proofRef,
+          enduranceMinutes: isNaN(mins) ? null : mins,
+          enduranceMode: todayCh ? walkMode : null,
+          strengthDone: !!(strengthEl && strengthEl.checked)
+        }, t), function (r) {
           if (!r.ok) { document.getElementById('c-err').innerHTML = '<div class="err">' + esc(r.error) + '</div>'; return; }
           location.hash = '#/receipts';
         });
@@ -309,7 +402,7 @@
     html('<h1>Your receipts.</h1>' +
       '<div class="card" id="rcard" style="text-align:center">' +
       '<div class="smallcaps dim">' + esc(u.displayName || u.email) + '</div>' +
-      '<div style="font-family:Impact,\'Arial Black\',sans-serif; font-size:34px; letter-spacing:.05em; margin:6px 0">DAY ' + (pd || '\u2014') + ' OF 56</div>' +
+      '<div style="font-family:Impact,\'Arial Black\',sans-serif; font-size:34px; letter-spacing:.05em; margin:6px 0">DAY ' + (pd ? Math.min(pd, 56) : '\u2014') + ' OF 56</div>' +
       '<div class="stat-row">' +
       '<div class="stat"><div class="n">' + s.verifiedDays + '</div><div class="l">Days proven</div></div>' +
       '<div class="stat"><div class="n">' + s.streak + '</div><div class="l">Streak</div></div>' +
@@ -330,7 +423,7 @@
     x.fillStyle = '#f2ede3'; x.font = '44px Georgia, serif';
     x.fillText(u.displayName || 'A Proving Season buyer', 540, 320);
     x.font = '120px Impact, sans-serif'; x.fillStyle = '#d9a441';
-    x.fillText('DAY ' + (pd || '\u2014') + ' OF 56', 540, 510);
+    x.fillText('DAY ' + (pd ? Math.min(pd, 56) : '\u2014') + ' OF 56', 540, 510);
     x.fillStyle = '#f2ede3'; x.font = '58px Georgia, serif';
     x.fillText(s.verifiedDays + ' days proven  \u00b7  streak ' + s.streak, 540, 650);
     x.fillText(s.proofPosts + ' proof posts on file', 540, 740);
@@ -340,7 +433,7 @@
     x.font = '34px Georgia, serif';
     x.fillText('OUTGROW YESTERDAY \u00b7 rideordieamerica.com', 540, 1210);
     var a = document.createElement('a');
-    a.download = 'my-receipts-day' + (pd || 0) + '.png';
+    a.download = 'my-receipts-day' + (pd ? Math.min(pd, 56) : 0) + '.png';
     a.href = c.toDataURL('image/png');
     a.click();
   }
@@ -374,7 +467,11 @@
     if (!gate()) return;
     var u = me();
     var rows = store.checkinsFor(u.id).map(function (c) {
-      return '<tr><td>' + esc(c.dateISO) + '</td><td>' + esc(c.statement) + '</td><td>' + esc(c.proofType) + '</td>' +
+      var bits = [];
+      if (c.enduranceMinutes != null) bits.push(c.enduranceMinutes + ' min walk' + (c.enduranceMode ? ' (' + c.enduranceMode + ')' : ''));
+      if (c.strengthDone) bits.push('strength done');
+      return '<tr><td>' + esc(c.dateISO) + '</td><td>' + esc(c.statement) +
+        (bits.length ? '<br><span class="dim">' + esc(bits.join(' \u00b7 ')) + '</span>' : '') + '</td><td>' + esc(c.proofType) + '</td>' +
         '<td><span class="pill ' + c.status + '">' + c.status + '</span></td></tr>';
     }).join('');
     html('<h1>My proof history.</h1><p class="dim">Private. Yours. This is the file the receipts-clause audit reads at Day 56 \u2014 it builds itself as you go.</p>' +
@@ -389,7 +486,11 @@
         '\nDays proven (all): ' + ev.daysProven + ' \u00b7 verified: ' + ev.verifiedDays +
         ' \u00b7 current streak: ' + ev.currentStreak + ' \u00b7 best streak: ' + ev.bestStreak +
         '\nExported: ' + ev.exportedISO + '\n\n' + ev.clause + '\n\nENTRIES (newest first):\n' +
-        ev.entries.map(function (e) { return e.date + ' \u00b7 [' + e.review + '] ' + e.statement + ' \u00b7 proof: ' + e.proof; }).join('\n');
+        ev.entries.map(function (e) {
+          return e.date + ' \u00b7 [' + e.review + '] ' + e.statement + ' \u00b7 proof: ' + e.proof +
+            (e.enduranceMinutes != null ? ' \u00b7 walk: ' + e.enduranceMinutes + ' min (' + (e.enduranceMode || 'road') + ')' : '') +
+            (e.strengthDone ? ' \u00b7 strength: done' : '');
+        }).join('\n');
       var a = document.createElement('a');
       a.download = 'finisher-file.txt';
       a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));

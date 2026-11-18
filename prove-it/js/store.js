@@ -210,6 +210,10 @@
       statement: statement,
       proofType: data.proofType === 'photo' ? 'photo' : 'link',
       proofRef: data.proofRef,
+      enduranceMinutes: (typeof data.enduranceMinutes === 'number' && isFinite(data.enduranceMinutes))
+        ? Math.max(0, Math.round(data.enduranceMinutes)) : null,
+      enduranceMode: data.enduranceMode === 'roof' ? 'roof' : (data.enduranceMode === 'road' ? 'road' : null),
+      strengthDone: !!data.strengthDone,
       status: 'submitted', createdAt: new Date().toISOString()
     };
     this.db.checkins.push(rec);
@@ -251,7 +255,13 @@
       currentStreak: stats.streak,
       bestStreak: stats.bestStreak,
       entries: this.checkinsFor(userId).map(function (c) {
-        return { date: c.dateISO, statement: c.statement, proof: c.proofType + ': ' + String(c.proofRef).slice(0, 80), review: c.status };
+        return {
+          date: c.dateISO, statement: c.statement,
+          proof: c.proofType + ': ' + String(c.proofRef).slice(0, 80), review: c.status,
+          enduranceMinutes: c.enduranceMinutes != null ? c.enduranceMinutes : null,
+          enduranceMode: c.enduranceMode || null,
+          strengthDone: !!c.strengthDone
+        };
       }),
       clause: 'RECEIPTS CLAUSE: finish the Starter Manual and THE MIRROR back to back, 56 days, fully documented, submit, RODA audits; if they hold up, half the Starter price comes back by PayPal — $9.50. Story use is a separate permission, asked separately, declinable with every cent kept.',
       exportedISO: iso
@@ -395,7 +405,10 @@
   function mapCheckin(r) {
     return {
       id: r.id, userId: r.user_id, dateISO: r.date, statement: r.statement,
-      proofType: r.proof_type, proofRef: r.proof_ref, status: r.status, createdAt: r.created_at
+      proofType: r.proof_type, proofRef: r.proof_ref, status: r.status, createdAt: r.created_at,
+      enduranceMinutes: r.endurance_minutes != null ? r.endurance_minutes : null,
+      enduranceMode: r.endurance_mode || null,
+      strengthDone: !!r.strength_done
     };
   }
   function mapUser(profile, entRows, email) {
@@ -654,6 +667,14 @@
       });
     }).then(function (rows) {
       var rec = mapCheckin(rows[0]);
+      // The card fields ride on the local mirror now; the server columns
+      // (checkins.endurance_minutes / endurance_mode / strength_done) land
+      // with the hookup migration in schema/supabase-schema.sql, after
+      // which mapCheckin reads them back from the row itself.
+      rec.enduranceMinutes = (typeof data.enduranceMinutes === 'number' && isFinite(data.enduranceMinutes))
+        ? Math.max(0, Math.round(data.enduranceMinutes)) : null;
+      rec.enduranceMode = data.enduranceMode === 'roof' ? 'roof' : (data.enduranceMode === 'road' ? 'road' : null);
+      rec.strengthDone = !!data.strengthDone;
       self.db.checkins.push(rec);
       return { ok: true, checkin: rec };
     }).catch(function (err) { return { ok: false, error: (err && err.message) || 'Could not file that receipt. Try again.' }; });
