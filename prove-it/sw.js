@@ -1,6 +1,6 @@
 /* PROVE IT — service worker. Cache-first: after first load, the whole app —
    books included — reads offline. Bump VERSION to ship an update. */
-var VERSION = 'proveit-v3';
+var VERSION = 'proveit-v5';
 var CORE = [
   './',
   'index.html',
@@ -14,7 +14,9 @@ var CORE = [
   'manifest.webmanifest',
   'icons/icon.svg',
   'icons/icon-192.png',
-  'icons/icon-512.png'
+  'icons/icon-512.png',
+  'icons/icon-180.png',
+  'icons/icon-maskable-512.png'
 ];
 
 self.addEventListener('install', function (e) {
